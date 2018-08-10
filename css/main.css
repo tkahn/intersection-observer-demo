@@ -1,0 +1,44 @@
+body {
+	font-family: 'Courier New', Courier, monospace;
+	width: 640px;
+	margin: 0 auto;
+}
+
+.js-lazy-image {
+	width: 640px;
+	height: 480px;
+}
+
+.wrapper {
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.label {
+	display: block;
+	position: absolute;
+	background-color: #fff;
+	padding: 5px;
+}
+
+.top-left {
+	top: 10px;
+	left: 10px;
+}
+
+.top-right {
+	top: 10px;
+	right: 10px;
+}
+
+.bottom-right {
+	bottom: 10px;
+	right: 10px;
+}
+
+.bottom-left {
+	bottom: 10px;
+	left: 10px;
+}
+
+

@@ -1,0 +1,176 @@
+<!doctype html>
+<html class="no-js" lang="sv">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Intersection Observer Demo - Thomas Kahn, Limetta</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="A demo showing the possibilities with intersection observer">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<h1>Intersection Observer Demo</h1>
+	<p>This is a demo showing the possibilities of using IntersectionObserver to load images only when they come into view.</p>
+	<p>It's entirely based on <a href="https://deanhume.com/lazy-loading-images-using-intersection-observer/" target="_blank" rel="noopener">Dean Humes</a> <a href="https://github.com/deanhume/lazy-observer-load/" target="_blank" rel="noopener">lazy-observer-load</a>. To this I've added demo images, a small gulp server, information about your browser and its support for Intersection Observer.</p>
+	<p class="browser-info"></p>
+
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_1.jpg" alt="birds">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_2.jpg" alt="dog">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_3.jpg" alt="dog">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_4.jpg" alt="cat">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_1.jpg" alt="bridge">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_2.jpg" alt="bridge">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_3.jpg" alt="street">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>	
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_1.jpg" alt="hills">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_2.jpg" alt="autumn">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_3.jpg" alt="sea">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_4.jpg" alt="alps">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_5.jpg" alt="path">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_6.jpg" alt="roots">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_1.jpg" alt="bike">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_2.png" alt="funny faces">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_3.jpg" alt="suits">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_4.jpg" alt="blonde">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_5.jpg" alt="scarf">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+	<div class="wrapper">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_6.png" alt="face">
+		<span class="label top-left"></span>
+		<span class="label top-right"></span>
+		<span class="label bottom-right"></span>
+		<span class="label bottom-left"></span>
+	</div>
+	<br>
+
+	<script src="js/main.js"></script>
+</body>
+
+</html>
