@@ -4,6 +4,16 @@ body {
 	margin: 0 auto;
 }
 
+.control-panel {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 1em;
+}
+
+label {
+	font-weight: normal;
+}
+
 .js-lazy-image {
 	width: 640px;
 	height: 480px;
@@ -12,6 +22,11 @@ body {
 .wrapper {
 	position: relative;
 	margin-bottom: 50px;
+}
+
+.hidden {
+	opacity: 1;
+	visibility: hidden;
 }
 
 .label {
@@ -40,5 +55,3 @@ body {
 	bottom: 10px;
 	left: 10px;
 }
-
-

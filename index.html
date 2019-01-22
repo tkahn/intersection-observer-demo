@@ -17,8 +17,23 @@
 	<p>It's entirely based on <a href="https://deanhume.com/lazy-loading-images-using-intersection-observer/" target="_blank" rel="noopener">Dean Humes</a> <a href="https://github.com/deanhume/lazy-observer-load/" target="_blank" rel="noopener">lazy-observer-load</a>. To this I've added demo images, a small gulp server, information about your browser and its support for Intersection Observer.</p>
 	<p class="browser-info"></p>
 
+
+	<form>
+		<fieldset class="control-panel">
+			<legend>Choose mode</legend>
+			<p>
+				<input type="radio" name="mode" id="0" checked><label for="0">Continuous observation</label>
+			</p>
+			<p>
+				<input type="radio" name="mode" id="1"><label for="1">Stop observing after load</label>
+			</p>
+		</fieldset>
+	</form>
+
+
+
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_1.jpg" alt="birds">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_1.jpg" alt="pidgeons">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -26,7 +41,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_2.jpg" alt="dog">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_2.jpg" alt="dog and game">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -34,7 +49,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_3.jpg" alt="dog">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_3.jpg" alt="white dog">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -42,7 +57,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_4.jpg" alt="cat">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/animal_4.jpg" alt="staring cat">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -50,7 +65,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_1.jpg" alt="bridge">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_1.jpg" alt="bridge lamps">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -58,7 +73,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_2.jpg" alt="bridge">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_2.jpg" alt="bridge taillights">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -66,7 +81,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_3.jpg" alt="street">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/arch_3.jpg" alt="new york street">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -74,7 +89,7 @@
 	</div>	
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_1.jpg" alt="hills">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_1.jpg" alt="sunny hills">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -82,7 +97,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_2.jpg" alt="autumn">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_2.jpg" alt="autumn leaves">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -90,7 +105,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_3.jpg" alt="sea">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_3.jpg" alt="the sea">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -98,7 +113,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_4.jpg" alt="alps">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_4.jpg" alt="alp slopes">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -106,7 +121,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_5.jpg" alt="path">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_5.jpg" alt="winter path">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -114,7 +129,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_6.jpg" alt="roots">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/nature_6.jpg" alt="mossy roots">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -122,7 +137,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_1.jpg" alt="bike">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_1.jpg" alt="man and bike">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -154,7 +169,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_5.jpg" alt="scarf">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_5.jpg" alt="yellow scarf">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>
@@ -162,7 +177,7 @@
 	</div>
 	<br>
 	<div class="wrapper">
-		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_6.png" alt="face">
+		<img class="js-lazy-image" src="images/transparent.png" data-src="images/people_6.png" alt="pretty face">
 		<span class="label top-left"></span>
 		<span class="label top-right"></span>
 		<span class="label bottom-right"></span>

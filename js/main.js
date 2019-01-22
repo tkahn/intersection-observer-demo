@@ -1,5 +1,6 @@
 // Get all of the images that are marked up to lazy load
 const images = document.querySelectorAll('.js-lazy-image');
+const labels = document.querySelectorAll('.label');
 
 const browser = getBrowser();
 
@@ -10,7 +11,7 @@ browserInfo.innerHTML = "<b>Browser:</b> " + browser.name + "<br>" +
 	"<b>Supports Intersection Observer:</b> " + browser.supportsIntersectionObserver;
 
 
-const config = {
+const observerConfig = {
 	root: null,
 	rootMargin: "0px",
 	threshold: []
@@ -19,17 +20,20 @@ const config = {
 let imageCount = images.length;
 let observer;
 
+const intersectionMethods = [onIntersectionContinuos, onIntersection];
+let selectedIntersectionMethodIndex = 0;
+
 // If we don't have support for intersection observer, loads the images immediately
 if (!(browser.supportsIntersectionObserver)) {
 	loadImagesImmediately(images);
 } else {
 
 	for (let i = 0; i <= 1.0; i += 0.01) {
-		config.threshold.push(i);
+		observerConfig.threshold.push(i);
 	}
 
 	// It is supported, load the images
-	observer = new IntersectionObserver(onIntersectionContinuos, config);
+	observer = new IntersectionObserver(intersectionMethod, observerConfig);
 
 	// foreach() is not supported in IE
 	for (let i = 0; i < images.length; i++) {
@@ -40,6 +44,10 @@ if (!(browser.supportsIntersectionObserver)) {
 
 		observer.observe(image);
 	}
+}
+
+function intersectionMethod (entries) {
+	intersectionMethods[selectedIntersectionMethodIndex](entries);
 }
 
 /**
@@ -61,10 +69,11 @@ function fetchImage (url) {
  */
 function preloadImage (image) {
 	const src = image.dataset.src;
-	if (!src) {
+
+	if (!src || image.src !== 'http://localhost:3000/images/transparent.png') {
 		return;
 	}
-
+	console.log("Loaded image: ", image.alt);
 	return fetchImage(src).then(() => { applyImage(image, src); });
 }
 
@@ -96,22 +105,10 @@ function disconnect () {
  * @param {array} entries 
  */
 function onIntersection (entries) {
-	console.log("intersecting");
-	var visibleEntries = entries.filter(entry => entry.isIntersecting)
-	var labelElem;
-
-	for (let i = 0; i < visibleEntries.length; i++) {
-		let image = entries[i].target;
-		labelElem = nextByClass(image, "intersection-ratio");
-		if (labelElem != null) {
-			labelElem.innerHTML = (Math.ceil(entries[i].intersectionRatio * 100)) + "%";
-		}
-	}
-
 
 	// Disconnect if we've already loaded all of the images
 	if (imageCount === 0) {
-		disconnect();
+		observer.disconnect();
 	}
 
 	// Loop through the entries
@@ -128,14 +125,21 @@ function onIntersection (entries) {
 	}
 }
 
+/**
+ * On intersection continuous. Does not unobserve elements when they are loaded
+ * in order to present percentage visible.
+ * @param {array} entries 
+ */
 function onIntersectionContinuos (entries) {
-	console.log("intersecting");
+
 	let labelClasses = ["top-left", "top-right", "bottom-right", "bottom-left"];
 
 	for (let i = 0; i < entries.length; i++) {
-		let image = entries[i].target;
+		let entry = entries[i];
+		let image = entry.target;
+
 		image.style.opacity = entries[i].intersectionRatio;
-		let visiblePercentage = (Math.floor(entries[i].intersectionRatio * 100)) + "%";
+		let visiblePercentage = (Math.floor(entry.intersectionRatio * 100)) + "%";
 		let label = {};
 
 		for (let i = 0; i < labelClasses.length; i++) {
@@ -143,21 +147,12 @@ function onIntersectionContinuos (entries) {
 			label.innerHTML = visiblePercentage;
 		}
 
-	};
-
-	// Loop through the entries
-	for (let i = 0; i < entries.length; i++) {
-		let entry = entries[i];
-		// Are we in viewport?
 		if (entry.intersectionRatio > 0) {
 			imageCount--;
-
-			// Stop watching and load the image
-			//observer.unobserve(entry.target);
 			preloadImage(entry.target);
+			
 		}
-	}
-
+	};
 }
 
 
@@ -197,12 +192,18 @@ function getBrowser () {
 	};
 }
 
+/**
+ * Check if element has a class
+ */
 function hasClass (elem, cls) {
 	var str = " " + elem.className + " ";
 	var testCls = " " + cls + " ";
 	return (str.indexOf(testCls) != -1);
 }
 
+/**
+ * Get next sibling with specific class
+ */
 function nextByClass (node, cls) {
 	while (node = node.nextSibling) {
 		if (hasClass(node, cls)) {
@@ -212,4 +213,34 @@ function nextByClass (node, cls) {
 	return null;
 }
 
+const controlPanel = document.querySelector('.control-panel');
+controlPanel.addEventListener("click", handleControlPanel);
 
+function handleControlPanel (event) {
+	let target = event.target;
+	if (target.id.length > 0) {
+		let targetId = parseInt(target.id);
+
+		selectedIntersectionMethodIndex = targetId;
+
+		switch (targetId) {
+
+			case 1:
+				// Remove all opacity
+				for (let i = 0; i < images.length; i++) {
+					images[i].removeAttribute("style");
+				}
+
+				for (let i = 0; i < labels.length; i++) {
+					labels[i].classList.add("hidden");
+				}
+
+				break;
+			default:
+				for (let i = 0; i < labels.length; i++) {
+					labels[i].classList.remove("hidden");
+				}
+				break;
+		}
+	}
+}
